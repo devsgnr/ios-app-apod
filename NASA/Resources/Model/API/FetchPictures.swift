@@ -7,7 +7,7 @@ import Foundation
 
 
 // URL
-var url = "https://api.nasa.gov/planetary/apod?api_key=X6DlBVkXavRpZ44aZzdpxlqXLnOfDV7fAiLsjaK6&count=30"
+var url = "https://api.nasa.gov/planetary/apod?api_key=KEY&count=30"
 
 
 final class ViewData: ObservableObject {
