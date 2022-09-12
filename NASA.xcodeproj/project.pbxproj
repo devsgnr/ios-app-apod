@@ -115,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				04C7E24828CBE8B8006CA9A6 /* Utils */,
+				04F2EC2B28C94A110001F120 /* Network */,
 				04F2EC2428C933610001F120 /* Resources */,
 				0489ACAA28C7FF3A009F71B0 /* Views */,
 				0489AC8028C7FE1A009F71B0 /* NASAApp.swift */,
@@ -184,14 +185,6 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		04C7E24528CBE721006CA9A6 /* Types */ = {
-			isa = PBXGroup;
-			children = (
-				04F2EC2828C9482E0001F120 /* PictureDataModel.swift */,
-			);
-			path = Types;
-			sourceTree = "<group>";
-		};
 		04C7E24828CBE8B8006CA9A6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,18 +215,17 @@
 		04F2EC2A28C948350001F120 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				04C7E24528CBE721006CA9A6 /* Types */,
-				04F2EC2B28C94A110001F120 /* API */,
+				04F2EC2828C9482E0001F120 /* PictureDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		04F2EC2B28C94A110001F120 /* API */ = {
+		04F2EC2B28C94A110001F120 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				04F2EC2C28C94A2A0001F120 /* FetchPictures.swift */,
 			);
-			path = API;
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
