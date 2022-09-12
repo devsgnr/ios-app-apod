@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct NASAApp: App {
+    @StateObject private var data = ViewData()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(data)
         }
     }
 }
