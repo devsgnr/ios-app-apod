@@ -19,9 +19,13 @@ struct List: View {
             ScrollView {
                 switch data.state {
                     case ResponseState.Loading:
-                        VStack(alignment: .center) {
-                            ProgressView()
-                                .padding(.top, 50)
+                        VStack {
+                            ProgressView{
+                                Text("Fetching really rad NASA pictures")
+                                    .font(.subheadline)
+                                    .padding(.top, 2.5)
+                            }
+                            .padding(.top, 50)
                         }
                     
                     case ResponseState.Failed:
@@ -54,9 +58,7 @@ struct List: View {
             }
             .navigationTitle("Pictures")
             .refreshable {
-                DispatchQueue.main.async {
-                    data.refresh()
-                }
+                await data.refresh()
             }
             
         }

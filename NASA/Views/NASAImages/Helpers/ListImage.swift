@@ -13,12 +13,16 @@ struct ListImage: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            data.image
+            UnpackImage(url: data.url)
+            
+            Text(data.title.prefix(20))
+                .font(.subheadline)
+                .fontWeight(.bold)
+                .foregroundColor(.black)
                 
             Text(data.date)
                 .font(.caption)
                 .foregroundColor(.gray)
-                .padding(.top, 0.2)
         }
     }
 }

@@ -6,11 +6,13 @@
 import SwiftUI
 
 struct ImageDetails: View {
+    @Environment(\.managedObjectContext) var context
+    
     var data: PictureData
     
     var body: some View {
         ScrollView {
-            data.hdimage
+            UnpackHDImage(url: data.url)
             
             VStack(alignment: .leading) {
                 Text(data.title)
@@ -18,9 +20,17 @@ struct ImageDetails: View {
                     .fontWeight(.bold)
                     .padding(.bottom, 0.5)
                     
-                Text(data.date)
-                    .font(.subheadline)
+                HStack {
+                    Text(data.date)
+                        .font(.subheadline)
                     .foregroundColor(.gray)
+                    
+                    Spacer()
+                    
+                    Button(action: addPictureToFav) {
+                        Label("", systemImage: "star")
+                    }
+                }
                 
                 Divider()
                 
@@ -36,7 +46,20 @@ struct ImageDetails: View {
         .navigationTitle(data.title)
         .navigationBarTitleDisplayMode(.inline)
     }
+    
+    func addPictureToFav() {
+        let picture = PictureDataModel(context: context)
+        picture.url = data.url
+        picture.title = data.title
+        picture.date = data.date
+        picture.explanation = data.explanation
+        
+        if context.hasChanges {
+            PersistenceController.shared.save()
+        }
+    }
 }
+
 
 struct ImageDetails_Previews: PreviewProvider {
     static var data = ViewData().pictures

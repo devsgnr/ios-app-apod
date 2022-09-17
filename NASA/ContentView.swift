@@ -14,6 +14,10 @@ struct ContentView: View {
                 .tabItem{
                     Label("Pictures", systemImage: "photo.on.rectangle.angled")
                 }
+            FavoritePictures()
+                .tabItem{
+                    Label("Favorites", systemImage: "star.fill")
+                }
             
             Info()
                 .tabItem {

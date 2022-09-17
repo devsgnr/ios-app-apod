@@ -4,10 +4,11 @@
 //  Created by Emmanuel Watila on 07/09/2022.
 
 import Foundation
+import CoreData
 
 
 // URL
-var url = "https://api.nasa.gov/planetary/apod?api_key=KEY&count=30"
+var url = "https://api.nasa.gov/planetary/apod?api_key=X6DlBVkXavRpZ44aZzdpxlqXLnOfDV7fAiLsjaK6&count=30"
 
 
 final class ViewData: ObservableObject {
@@ -19,7 +20,7 @@ final class ViewData: ObservableObject {
         makeCall()
     }
     
-    func getNASAPictures(completion: @escaping (Result<[PictureData], Error>) -> Void) -> Void {
+    func getNASAPictures(completion: @escaping (Result<[PictureData], Error>) -> Void) -> Void  {
         let task = URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
             
             if let error = error {
@@ -64,11 +65,10 @@ final class ViewData: ObservableObject {
         }
     }
     
-    func refresh () {
+    func refresh () async {
         makeCall()
     }
     
     //End
 }
-
 
