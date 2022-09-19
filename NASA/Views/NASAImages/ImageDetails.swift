@@ -23,12 +23,12 @@ struct ImageDetails: View {
                 HStack {
                     Text(data.date)
                         .font(.subheadline)
-                    .foregroundColor(.gray)
+                        .foregroundColor(.gray)
                     
                     Spacer()
                     
                     Button(action: addPictureToFav) {
-                        Label("", systemImage: "star")
+                        Label("Add to Favorites", systemImage: "star")
                     }
                 }
                 
@@ -59,6 +59,8 @@ struct ImageDetails: View {
         }
     }
 }
+
+
 
 
 struct ImageDetails_Previews: PreviewProvider {

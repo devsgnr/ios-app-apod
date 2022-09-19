@@ -15,7 +15,7 @@ struct FavoritePictures: View {
         animation: .default
     ) private var pictures: FetchedResults<PictureDataModel>
     
-    private var twoColumnGrid = Array(repeating: GridItem(.adaptive(minimum: 170)), count: 2)
+    private var twoColumnGrid = Array(repeating: GridItem(.adaptive(minimum: 180)), count: 2)
     
     var body: some View {
         NavigationView {
@@ -33,7 +33,7 @@ struct FavoritePictures: View {
                     .padding(.top, 50)
                 } else {
                     LazyVGrid(columns: twoColumnGrid) {
-                        ForEach(pictures, id: \.self) {picture in
+                        ForEach(Array(pictures.enumerated()), id: \.offset) { offset, picture in
                             NavigationLink {
                                 ScrollView {
                                     UnpackHDImage(url: picture.url!)
@@ -64,15 +64,20 @@ struct FavoritePictures: View {
                             } label: {
                                 VStack(alignment: .leading) {
                                     UnpackImage(url: picture.url!)
+                                        .contextMenu {
+                                            Button(action: { UIPasteboard.general.string = picture.url! }) {
+                                                Label("Copy Link", systemImage: "doc.on.doc")
+                                            }
+                                            
+                                            Button(role: .destructive, action: { deleteItem(offset) }) {
+                                                Label("Delete", systemImage: "trash")
+                                            }
+                                        }
                                     
-                                    Text(picture.title!.prefix(20))
+                                    Text(picture.title!.count > 20 ? "\(picture.title!.prefix(17))..." : picture.title!)
                                         .font(.subheadline)
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.black)
-                                    
-                                    Text(picture.date!)
-                                        .font(.caption)
-                                        .foregroundColor(.gray)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.primary)
                                 }
                             }
                         }
@@ -82,6 +87,13 @@ struct FavoritePictures: View {
             .navigationBarTitle("Favorites")
             .padding()
         }
+    }
+    
+    func deleteItem(_ index: Int) {
+        let picture = pictures[index]
+        viewContext.delete(picture)
+            
+        PersistenceController.shared.save()
     }
 }
 

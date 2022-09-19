@@ -15,14 +15,10 @@ struct ListImage: View {
         VStack(alignment: .leading) {
             UnpackImage(url: data.url)
             
-            Text(data.title.prefix(20))
+            Text(data.title.count > 20 ? "\(data.title.prefix(17))..." : data.title)
                 .font(.subheadline)
-                .fontWeight(.bold)
-                .foregroundColor(.black)
-                
-            Text(data.date)
-                .font(.caption)
-                .foregroundColor(.gray)
+                .fontWeight(.semibold)
+                .foregroundColor(.primary)
         }
     }
 }

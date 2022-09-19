@@ -16,14 +16,14 @@ struct UnpackImage: View {
         if let data = data, let uiimage = UIImage(data: data) {
             Image(uiImage: uiimage)
                 .resizable()
-                .frame(width: 170, height: 170)
-                .cornerRadius(15)
+                .frame(width: 180, height: 180)
+                .cornerRadius(7.5)
                 .aspectRatio(contentMode: .fill)
         } else {
             Image("galaxy")
                 .resizable()
-                .frame(width: 170, height: 170)
-                .cornerRadius(10)
+                .frame(width: 180, height: 180)
+                .cornerRadius(7.5)
                 .aspectRatio(contentMode: .fill)
                 .blur(radius: 2.5)
                 .onAppear { fetchImage() }

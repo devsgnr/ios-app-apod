@@ -11,7 +11,7 @@ struct List: View {
     @EnvironmentObject var data: ViewData
     
     private var obj = ViewData()
-    private var twoColumnGrid = Array(repeating: GridItem(.adaptive(minimum: 170)), count: 2)
+    private var twoColumnGrid = Array(repeating: GridItem(.adaptive(minimum: 180)), count: 2)
     
     
     var body: some View {
@@ -60,7 +60,6 @@ struct List: View {
             .refreshable {
                 await data.refresh()
             }
-            
         }
     }
 }
