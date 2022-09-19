@@ -65,6 +65,10 @@ struct FavoritePictures: View {
                                 VStack(alignment: .leading) {
                                     UnpackImage(url: picture.url!)
                                         .contextMenu {
+                                            Text(picture.title!)
+                                                .font(.system(size: 1))
+                                                .foregroundColor(.gray)
+                                            
                                             Button(action: { UIPasteboard.general.string = picture.url! }) {
                                                 Label("Copy Link", systemImage: "doc.on.doc")
                                             }
